@@ -1,23 +1,25 @@
 const express = require('express');
 const router = require('./routers');
 const bodyParser = require('body-parser');
+const path = require('path');
+
+const middlewares = require('./middlewares');
 
 const port = 3000;
 
 
-const app = new express();
+const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/', router);
+app.use(middlewares.redirectMidlleware);
 
-app.get('/', (req, res) => {
-    res.end('express works');
-});
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.listen(port, error => {
     if(error){
         console.error(error);
         return;
     }
-    console.log("server runs on port: ", port);
+    console.log("Server runs on port: ", port);
 });

@@ -103,6 +103,7 @@ router.post('/api/url', async (req, res) => {
 
 router.get('/api/rank', (req, res) => {
     res.set("content-type", "text/html;charset=UTF-8");
+    // language=HTML
     res.end(`
    /**<br/>
  * 根据type获取歌曲排行榜<br/>
@@ -145,8 +146,14 @@ router.post('/api/rank', async (req, res) => {
 
     const result = _.has(api.typeMap, type) || _.has(api.typeMap.global, type) || type === undefined;
     if(!result) return res.end('参数不正确！');
-    const ret = await api.rankList(type).catch(err => console.log(err));
+    const ret = await api.rank(type).catch(err => console.log(err));
     res.end(ret);
+});
+
+router.get('/api/rankList', async (req, res) => {
+    res.set("content-type", 'application/json;charset=UTF-8');
+    const rank = JSON.stringify(api.rankList());
+    res.end(rank);
 });
 
 

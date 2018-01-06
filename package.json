@@ -6,6 +6,7 @@
   "license": "MIT",
   "author": "CG",
   "scripts": {
+    "build": "./node_modules/.bin/webpack -w",
     "dev": "webpack-dev-server"
   },
   "devDependencies": {
@@ -17,18 +18,26 @@
     "file-loader": "^1.1.5",
     "html-webpack-externals-plugin": "^3.6.0",
     "html-webpack-plugin": "^2.30.1",
+    "nodemon": "^1.14.6",
     "style-loader": "^0.19.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.5"
   },
   "dependencies": {
     "CoverflowJS": "https://github.com/coverflowjs/coverflow.git",
+    "body-parser": "^1.18.2",
     "bootstrap": "4.0.0-beta.2",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.2",
     "jquery": "^3.2.1",
+    "jsdom": "^11.5.1",
+    "lodash": "^4.17.4",
     "popper.js": "^1.12.9",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "request": "^2.83.0"
   }
 }

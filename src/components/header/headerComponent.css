@@ -1,4 +1,8 @@
 
+.container {
+    max-width: 90%;
+}
+
 #reactLogo {
     width: 5em;
     height: 5em;

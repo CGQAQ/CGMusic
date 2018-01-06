@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-import { trendingRankList } from "./reducers/trendingRankList";
+import { sideBarItemDataReducer } from "./components/home/reducers";
 
 
 const mainReducer = combineReducers({
-    trendingRankList: trendingRankList
+    sideBarItemDataReducer,
 });
 
 export const Store = createStore(mainReducer)

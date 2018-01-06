@@ -3,29 +3,31 @@ import React, {Component} from 'react';
 import react from '../../assets/img/react.png';
 import './headerComponent.css';
 
+import { Link } from 'react-router-dom'
+
 class HeaderComponent extends Component {
 
     render() {
         return (
             <div className="container">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-md navbar-light bg-light">
                     <a className="navbar-brand" href="/">CGMusic</a>
                     <a className="navbar-brand" href="https://reactjs.org/" target="_blank">
                         <img src={react} alt="ReactLogo" id="reactLogo" title="Powered by React"/>
                     </a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            data-target="#navbarContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon" />
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse" id="navbarContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">Home</a>
+                                <Link className="nav-link" to="/home">Home</Link>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Player</a>
+                            <li classNname="nav-item">
+                                <Link className="nav-link" to="/player">Player</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

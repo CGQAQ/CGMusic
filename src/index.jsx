@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import ReactDom from "react-dom";
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { Provider, connect } from "react-redux";
 
 import { Store } from "./store";
 import HeaderComponent from './components/header/headerComponent'
+import HomeComponent from  './components/home/homeComponent'
+import PlayerComponent from "./components/player/playerComponent";
 
 
 class MainComponent extends Component {
@@ -11,21 +14,25 @@ class MainComponent extends Component {
 
     render() {
         return (
-            <div>
-                <HeaderComponent />
-            </div>
+            <Router>
+                <div>
+                    <Redirect from="/" to="/home"/>
+                    <HeaderComponent />
+                    <Route path='/home' component={HomeComponent}/>
+                    <Route path='/player' component={PlayerComponent}/>
+                </div>
+            </Router>
         )
+        // return (
+        //     <h1> what the hell is going on world</h1>
+        // )
     }
 }
-
-const App = connect((state) => {
-    return {hello: state.trendingRankList}
-})(MainComponent)
 
 
 ReactDom.render(
     <Provider store={Store}>
-        <App />
+        <MainComponent />
     </Provider>,
     document.getElementById('root')
 );

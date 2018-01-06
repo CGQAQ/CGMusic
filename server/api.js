@@ -137,7 +137,7 @@ const typeMap = {
  * @returns {Promise}
  */
 
-function rankList(type) {
+function rank(type) {
     if(type !== undefined){
         if(_.has(typeMap, type)){
             type = typeMap[type];
@@ -159,11 +159,26 @@ function rankList(type) {
     });
 }
 
+
+function rankList() {
+    let ret = { cn: [], global: [] };
+    _.keys(typeMap).forEach(item => {
+       if (item !== 'global'){
+            ret.cn.push(item);
+       }
+    });
+    _.keys(typeMap.global).forEach(item => {
+        ret.global.push(item);
+    });
+    return ret;
+}
+
 module.exports = {
     suggest: suggest,
     search: search,
     details: details,
     url: url,
     typeMap: typeMap,
-    rankList: rankList
+    rank: rank,
+    rankList: rankList,
 };
