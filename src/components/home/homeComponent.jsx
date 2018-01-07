@@ -1,7 +1,10 @@
 import React from 'react';
-import _ from 'lodash';
-import { updateSideBarDataAction } from './actions';
 import { connect } from "react-redux";
+
+import _ from 'lodash';
+import axios from 'axios'
+
+import { updateSideBarDataAction } from './actions';
 
 
 class HomeComponent extends React.Component {
@@ -17,7 +20,8 @@ class HomeComponent extends React.Component {
     render() {
         return (
             <div className='container' >
-                <div id='sideBar' className='float-left'>
+                <h1>helllo lllll</h1>
+                <div id='sideBar' className='float-left' onLoad={this.props.updateSideBarData}>
                     <ul className='list-group'>
 
                     </ul>
@@ -36,16 +40,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         updateSideBarData: () => {
-            $.post('/api/rankList', success = d => {
-                if(!d.err){
-                    dispatch(updateSideBarDataAction(d.data))
-                }
-            })
+            axios.post('/api/rankList').then(res => console.log(res))
         },
     }
 };
 
-export default connect(mapStateToProps//, mapDispatchToProps
-)(HomeComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent)
 
 

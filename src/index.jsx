@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDom from "react-dom";
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import { Provider, connect } from "react-redux";
 
 import { Store } from "./store";
@@ -11,12 +11,14 @@ import PlayerComponent from "./components/player/playerComponent";
 
 class MainComponent extends Component {
 
+    constructor(props){
+        super(props);
+    }
 
     render() {
         return (
             <Router>
-                <div>
-                    <Redirect from="/" to="/home"/>
+                <div onLoad={ this.props.history.push('/home') }>
                     <HeaderComponent />
                     <Route path='/home' component={HomeComponent}/>
                     <Route path='/player' component={PlayerComponent}/>

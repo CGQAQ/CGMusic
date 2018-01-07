@@ -5,7 +5,7 @@ const _ = require('lodash');
 
 const router = new Router();
 
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
     res.setHeader("content-type", "text/html;charset=UTF-8");
     res.end(`
 <h1>Author: CG 转载使用请注明原作者和出处！</h1>
@@ -17,7 +17,7 @@ router.get('/api', (req, res) => {
 <h2 style="background: greenyellow">更详细的API说明，请以GET请求的方式请求想要知道使用方法的API（或用浏览器直接打开）e.g.: <a href="/api/suggest" target="_blank">/api/suggest</a></h2>`)
 });
 
-router.get('/api/suggest', (req, res) => {
+router.get('/suggest', (req, res) => {
    res.set("content-type", "text/html;charset=UTF-8");
    res.end(`
    /**<br/>
@@ -28,7 +28,7 @@ router.get('/api/suggest', (req, res) => {
  */
    `);
 });
-router.post('/api/suggest', async (req, res) => {
+router.post('/suggest', async (req, res) => {
     if(!req.body.kw) return res.end("参数不正确！");
     res.set("content-type", 'text/plain;charset=UTF-8');
     const keyword = req.body.kw;
@@ -37,7 +37,7 @@ router.post('/api/suggest', async (req, res) => {
     res.end(ret);
 });
 
-router.get('/api/search', (req, res) => {
+router.get('/search', (req, res) => {
     res.set("content-type", "text/html;charset=UTF-8");
     res.end(`
    /**<br/>
@@ -49,7 +49,7 @@ router.get('/api/search', (req, res) => {
  */
    `);
 });
-router.post('/api/search', async (req, res) => {
+router.post('/search', async (req, res) => {
     if(!req.body.kw) return res.end("参数不正确！");
     const keyword = req.body.kw;
     const limit  = req.body.limit;
@@ -60,7 +60,7 @@ router.post('/api/search', async (req, res) => {
 
 });
 
-router.get('/api/details', (req, res) => {
+router.get('/details', (req, res) => {
     res.set("content-type", "text/html;charset=UTF-8");
     res.end(`
    /**<br/>
@@ -70,7 +70,7 @@ router.get('/api/details', (req, res) => {
  */
    `);
 });
-router.post('/api/details', async (req, res) => {
+router.post('/details', async (req, res) => {
     if(!req.body.idList) return res.end("参数不正确！");
     const idList = req.body.idList;
     res.set("content-type", 'text/plain;charset=UTF-8');
@@ -80,7 +80,7 @@ router.post('/api/details', async (req, res) => {
 });
 
 
-router.get('/api/url', (req, res) => {
+router.get('/url', (req, res) => {
     res.set("content-type", "text/html;charset=UTF-8");
     res.end(`
    /**<br/>
@@ -91,7 +91,7 @@ router.get('/api/url', (req, res) => {
  */
    `);
 });
-router.post('/api/url', async (req, res) => {
+router.post('/url', async (req, res) => {
     if(!req.body.ids) return res.end("参数不正确！");
     const ids = req.body.ids;
     const br = req.body.br;
@@ -101,7 +101,7 @@ router.post('/api/url', async (req, res) => {
 });
 
 
-router.get('/api/rank', (req, res) => {
+router.get('/rank', (req, res) => {
     res.set("content-type", "text/html;charset=UTF-8");
     // language=HTML
     res.end(`
@@ -140,7 +140,7 @@ router.get('/api/rank', (req, res) => {
  */
    `);
 });
-router.post('/api/rank', async (req, res) => {
+router.post('/rank', async (req, res) => {
     res.set("content-type", 'text/plain;charset=UTF-8');
     const type = req.body.type;
 
@@ -150,7 +150,7 @@ router.post('/api/rank', async (req, res) => {
     res.end(ret);
 });
 
-router.get('/api/rankList', async (req, res) => {
+router.get('/rankList', async (req, res) => {
     res.set("content-type", 'application/json;charset=UTF-8');
     const rank = JSON.stringify(api.rankList());
     res.end(rank);
