@@ -18,7 +18,7 @@ class MainComponent extends Component {
     render() {
         return (
             <Router>
-                <div onLoad={ this.props.history.push('/home') }>
+                <div>
                     <HeaderComponent />
                     <Route path='/home' component={HomeComponent}/>
                     <Route path='/player' component={PlayerComponent}/>

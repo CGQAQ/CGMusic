@@ -13,7 +13,10 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/api', router);
 app.get('/*', (req, res, next) => {
-    if(!_.startsWith(req.path, '/assets') && !_.startsWith(req.path, '/vendor') && !_.startsWith(req.path, '/index.bundle')){
+    if(req.path === '/'){
+        res.redirect('/home');
+    }
+    else if(!_.startsWith(req.path, '/assets') && !_.startsWith(req.path, '/vendor') && !_.startsWith(req.path, '/index.bundle')){
         res.sendFile(path.join(__dirname, '../', 'dist', 'index.html'));
     }
     else {

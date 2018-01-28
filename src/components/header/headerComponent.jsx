@@ -11,7 +11,7 @@ class HeaderComponent extends Component {
         return (
             <div className="container">
                 <nav className="navbar navbar-expand-md navbar-light bg-light">
-                    <a className="navbar-brand" href="/">CGMusic</a>
+                    <a className="navbar-brand" href="/home">CGMusic</a>
                     <a className="navbar-brand" href="https://reactjs.org/" target="_blank">
                         <img src={react} alt="ReactLogo" id="reactLogo" title="Powered by React"/>
                     </a>
@@ -26,7 +26,7 @@ class HeaderComponent extends Component {
                             <li className="nav-item active">
                                 <Link className="nav-link" to="/home">Home</Link>
                             </li>
-                            <li classNname="nav-item">
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/player">Player</Link>
                             </li>
                             <li className="nav-item dropdown">
